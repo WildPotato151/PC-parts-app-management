@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PC_parts_app_management
 {
     internal class Program
@@ -11,8 +12,12 @@ namespace PC_parts_app_management
         static void Main(string[] args)
         {
             Console.WriteLine("sal");
-         Console.ReadKey();
+
+          
+            
+            Console.ReadKey();
 
         }
     }
+    
 }
