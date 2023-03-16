@@ -22,12 +22,6 @@ namespace PC_parts_app_management
          pret = _pret;
         
         }
-
-
-        
-
-        
-
         
 
     }
