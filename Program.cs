@@ -1,17 +1,26 @@
-﻿using System;
+﻿using Clase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
+
+
+
+
 namespace PC_parts_app_management
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("sal");
+            Componenta c1 = new Componenta("CPU", "tes", "dqdqdqd", 24.5f);
+            Console.WriteLine(c1.GetNume());
+
+            Console.WriteLine("yes");
+            
 
           
             

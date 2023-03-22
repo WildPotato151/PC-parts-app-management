@@ -43,19 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Case.cs" />
-    <Compile Include="GPU.cs" />
-    <Compile Include="Motherboard.cs" />
-    <Compile Include="PowerSupply.cs" />
-    <Compile Include="RAM.cs" />
-    <Compile Include="Componenta.cs" />
-    <Compile Include="CPU.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageDevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clase\Clase.csproj">
+      <Project>{b7d098f3-cc6b-41d2-84e9-037e7ac6e1d8}</Project>
+      <Name>Clase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
