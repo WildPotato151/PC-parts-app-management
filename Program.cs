@@ -19,9 +19,9 @@ namespace PC_parts_app_management
             Componenta c1 = new Componenta("CPU", "tes", "dqdqdqd", 24.5f);
             Console.WriteLine(c1.GetNume());
 
-            Console.WriteLine("yes");
+            Console.WriteLine("yes2");
             
-
+            
           
             
             Console.ReadKey();
