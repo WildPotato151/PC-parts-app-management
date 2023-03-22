@@ -22,7 +22,10 @@ namespace PC_parts_app_management
             Componenta c2 = new Componenta("GPU", "NVIDIA", "RTX 4080", 4000f);
             Console.WriteLine($"Nume: {c2.GetNume()} | Brand: {c2.GetBrand()} | Model: {c2.GetModel()} | Pret: {c2.GetPret()} lei");
 
-
+            Componenta c3 = new Componenta("ssd", "kingston", "a400", 150f);
+            string showC3 = c3.showInfo();
+            Console.WriteLine(showC3);
+            
             Console.ReadKey();
 
         }

@@ -43,5 +43,9 @@ namespace Clase
             return pret;
         }
 
+        public string showInfo()
+        {
+            return $"Nume: {nume} | Brand: {brand} | Model: {model} | Pret:{pret} lei";
+        }
     }
 }
