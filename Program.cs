@@ -16,14 +16,13 @@ namespace PC_parts_app_management
     {
         static void Main(string[] args)
         {
-            Componenta c1 = new Componenta("CPU", "tes", "dqdqdqd", 24.5f);
-            Console.WriteLine(c1.GetNume());
+            Componenta c1 = new Componenta("CPU", "AMD", "3200g", 350f);
+            Console.WriteLine($"Nume: {c1.GetNume()} | Brand: {c1.GetBrand()} | Model: {c1.GetModel()} | Pret: {c1.GetPret()} lei");
 
-            Console.WriteLine("yes2");
-            
-            
-          
-            
+            Componenta c2 = new Componenta("GPU", "NVIDIA", "RTX 4080", 4000f);
+            Console.WriteLine($"Nume: {c2.GetNume()} | Brand: {c2.GetBrand()} | Model: {c2.GetModel()} | Pret: {c2.GetPret()} lei");
+
+
             Console.ReadKey();
 
         }
