@@ -9,11 +9,19 @@ namespace Clase
     public class Componenta
     {
         private string nume;
-        public string brand;
-        public string model;
-        public float pret;
+        private string brand;
+        private string model;
+        private float pret;
 
 
+        public Componenta()
+        {
+            nume = string.Empty;
+            brand = string.Empty;
+            model = string.Empty;
+            pret = 0.0f;
+        }
+        
         public Componenta(string nume, string brand, string model, float pret)
         {
             this.nume = nume;
@@ -47,5 +55,26 @@ namespace Clase
         {
             return $"Nume: {nume} | Brand: {brand} | Model: {model} | Pret:{pret} lei";
         }
+    
+        public void SetNume(string nume)
+        {
+            this.nume = nume;
+        }
+
+        public void SetBrand(string brand) 
+        {
+            this.brand = brand; 
+        }
+
+        public void SetModel(string model)
+        {
+            this.model = model;
+        }
+
+        public void SetPret(float pret)
+        {
+            this.pret = pret;
+        }
+
     }
 }

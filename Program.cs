@@ -25,7 +25,32 @@ namespace PC_parts_app_management
             Componenta c3 = new Componenta("ssd", "kingston", "a400", 150f);
             string showC3 = c3.showInfo();
             Console.WriteLine(showC3);
+
+            var c4 = new Componenta();
+            Console.WriteLine("Introdu nume: ");
+            string f1 = Console.ReadLine();
+            c4.SetNume(f1);
+
+            Console.WriteLine("Introdu brand: ");
+            string f2 = Console.ReadLine();
+            c4.SetBrand(f2);
+
+            Console.WriteLine("Introdu model: ");
+            string f3 = Console.ReadLine();
+            c4.SetModel(f3);
+
+            Console.WriteLine("Introdu pret: ");
+            float f4 = Convert.ToInt32(Console.ReadLine());
+            c4.SetPret(f4);
+
+
+            string showC4 = c4.showInfo();
+            Console.WriteLine(showC4);
+
+
             
+
+
             Console.ReadKey();
 
         }
