@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,6 +76,22 @@ namespace Clase
         public void SetPret(float pret)
         {
             this.pret = pret;
+        }
+        public class Scriere_fisier
+        {
+            public void scrie_in_fisier(Componenta componenta, string filePath)
+            {
+                using (StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Nume: " + componenta.nume);
+                    writer.WriteLine("Brand: " + componenta.brand);
+                    writer.WriteLine("Model: " + componenta.model);
+                    writer.WriteLine("Pret: " + componenta.pret + " lei");
+                    writer.WriteLine("---------------------------------");
+
+                    writer.Close();
+                }
+            }
         }
 
     }
