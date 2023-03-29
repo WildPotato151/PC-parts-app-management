@@ -53,6 +53,8 @@ namespace Clase
             return pret;
         }
 
+        
+        
         public string showInfo()
         {
             return $"Nume: {nume} | Brand: {brand} | Model: {model} | Pret:{pret} lei";
@@ -76,6 +78,26 @@ namespace Clase
         public void SetPret(float pret)
         {
             this.pret = pret;
+        }
+
+        public void GetInput()
+        {
+            Console.WriteLine("Introduceti numele componentei:");
+            SetNume(Console.ReadLine());
+
+            Console.WriteLine("Introduceti brand-ul componentei:");
+            SetBrand(Console.ReadLine());
+
+            Console.WriteLine("Introduceti modelul componentei:");
+            SetModel(Console.ReadLine());
+
+            Console.WriteLine("Introduceti pretul componentei:");
+            float pret;
+            while (!float.TryParse(Console.ReadLine(), out pret))
+            {
+                Console.WriteLine("Introduceti un pret valid:");
+            }
+            SetPret(pret);
         }
         public class Scriere_fisier
         {

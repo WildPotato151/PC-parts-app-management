@@ -17,6 +17,7 @@ namespace PC_parts_app_management
     {
         static void Main(string[] args)
         {
+            /*
             Componenta c1 = new Componenta("CPU", "AMD", "3200g", 350f);
             Console.WriteLine($"Nume: {c1.GetNume()} | Brand: {c1.GetBrand()} | Model: {c1.GetModel()} | Pret: {c1.GetPret()} lei");
             string filePath = "text.txt";
@@ -51,8 +52,49 @@ namespace PC_parts_app_management
             string showC4 = c4.showInfo();
             Console.WriteLine(showC4);
 
+            Componenta c5 = new Componenta();
+            c5.GetInput();
+            Console.WriteLine(c5.showInfo());
+            */
+            Componenta componenta = new Componenta();
+            bool exit = false;
+            string filePath = "text.txt";
 
-            
+            while (!exit)
+            {
+                Console.WriteLine("1. Seteaza o componenta ");
+                Console.WriteLine("2. Afiseaza o componenta ");
+                Console.WriteLine("3. Salveaza componenta in fisier");
+                Console.WriteLine("4. Iesire program");
+                Console.Write("Introdu optiune: ");
+
+                string optiune = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (optiune)
+                {
+                    case "1":
+                        componenta.GetInput();
+                        break;
+                    case "2":
+                        Console.WriteLine(componenta.showInfo());
+                        break;
+                    case "3":
+                        Componenta.Scriere_fisier fisier = new Componenta.Scriere_fisier();
+                        fisier.scrie_in_fisier(componenta, filePath);
+                        break;
+                    case "4":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Optiune invalida.");
+                        break;
+                }
+
+                Console.WriteLine();
+            }
+
+
 
 
             Console.ReadKey();
