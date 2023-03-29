@@ -56,16 +56,19 @@ namespace PC_parts_app_management
             c5.GetInput();
             Console.WriteLine(c5.showInfo());
             */
-            Componenta componenta = new Componenta();
+            //Componenta componenta = null;
             bool exit = false;
             string filePath = "text.txt";
+            List<Componenta> componentaList = new List<Componenta>();
 
             while (!exit)
             {
                 Console.WriteLine("1. Seteaza o componenta ");
-                Console.WriteLine("2. Afiseaza o componenta ");
+                Console.WriteLine("2. Afiseaza ultima componenta ");
                 Console.WriteLine("3. Salveaza componenta in fisier");
-                Console.WriteLine("4. Iesire program");
+                Console.WriteLine("4. Afiseaza toate componentele ");
+                Console.WriteLine("5. Cauta componenta dupa nume, model sau brand");
+                Console.WriteLine("6. Iesire program");
                 Console.Write("Introdu optiune: ");
 
                 string optiune = Console.ReadLine();
@@ -74,16 +77,66 @@ namespace PC_parts_app_management
                 switch (optiune)
                 {
                     case "1":
+                        Componenta componenta = new Componenta();
                         componenta.GetInput();
+                        componentaList.Add(componenta);
                         break;
                     case "2":
-                        Console.WriteLine(componenta.showInfo());
+                        if (componentaList.Count > 0) 
+                        {
+                            Console.WriteLine(componentaList.Last().showInfo());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nu exista o componenta setata.");
+                        }
                         break;
                     case "3":
-                        Componenta.Scriere_fisier fisier = new Componenta.Scriere_fisier();
-                        fisier.scrie_in_fisier(componenta, filePath);
+                        if (componentaList.Count > 0)
+                        {
+                            Componenta.Scriere_fisier fisier = new Componenta.Scriere_fisier();
+                            fisier.scrie_in_fisier(componentaList.Last(), filePath);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nu exista o componenta setata.");
+                        }
                         break;
                     case "4":
+                        if (componentaList.Count > 0)
+                        {
+                            Console.WriteLine("Afiseaza toate componentele:");
+                            foreach (Componenta c in componentaList.OrderBy(x => x.GetBrand()))
+                            {
+                                Console.WriteLine(c.showInfo());
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nu exista nicio componenta setata.");
+                        }
+                        break;
+                    case "5":
+                        Console.WriteLine("Introduceti termenul de cautare:");
+                        bool termenGasit = false;
+                        string termenCautat = Console.ReadLine().ToLower();
+                        Console.WriteLine("Rezultatele cautarii:");
+                        foreach (Componenta c in componentaList)
+                        {
+                            if (c.GetNume().ToLower().Contains(termenCautat) || 
+                                c.GetBrand().ToLower().Contains(termenCautat) || 
+                                c.GetModel().ToLower().Contains(termenCautat))
+                            {
+                                Console.WriteLine(c.showInfo());
+                                termenGasit = true;
+                            }
+                        }
+                        if (!termenGasit)
+                        {
+                            Console.WriteLine($"Nu s-a gasit nicio componenta care sa contina cuvantul '{termenCautat}'.");
+                        }
+                        break;
+                    case "6":
                         exit = true;
                         break;
                     default:
