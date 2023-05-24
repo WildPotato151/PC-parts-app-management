@@ -1,4 +1,5 @@
 ﻿using Clase;
+//using FileReader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,46 +18,8 @@ namespace PC_parts_app_management
     {
         static void Main(string[] args)
         {
-            /*
-            Componenta c1 = new Componenta("CPU", "AMD", "3200g", 350f);
-            Console.WriteLine($"Nume: {c1.GetNume()} | Brand: {c1.GetBrand()} | Model: {c1.GetModel()} | Pret: {c1.GetPret()} lei");
-            string filePath = "text.txt";
-            Componenta.Scriere_fisier fisier = new Componenta.Scriere_fisier();
-            fisier.scrie_in_fisier(c1, filePath);
-
-            Componenta c2 = new Componenta("GPU", "NVIDIA", "RTX 4080", 4000f);
-            Console.WriteLine($"Nume: {c2.GetNume()} | Brand: {c2.GetBrand()} | Model: {c2.GetModel()} | Pret: {c2.GetPret()} lei");
-
-            Componenta c3 = new Componenta("ssd", "kingston", "a400", 150f);
-            string showC3 = c3.showInfo();
-            Console.WriteLine(showC3);
-
-            var c4 = new Componenta();
-            Console.WriteLine("Introdu nume: ");
-            string f1 = Console.ReadLine();
-            c4.SetNume(f1);
-
-            Console.WriteLine("Introdu brand: ");
-            string f2 = Console.ReadLine();
-            c4.SetBrand(f2);
-
-            Console.WriteLine("Introdu model: ");
-            string f3 = Console.ReadLine();
-            c4.SetModel(f3);
-
-            Console.WriteLine("Introdu pret: ");
-            float f4 = Convert.ToInt32(Console.ReadLine());
-            c4.SetPret(f4);
-
-
-            string showC4 = c4.showInfo();
-            Console.WriteLine(showC4);
-
-            Componenta c5 = new Componenta();
-            c5.GetInput();
-            Console.WriteLine(c5.showInfo());
-            */
-            //Componenta componenta = null;
+           
+            
             bool exit = false;
             string filePath = "text.txt";
             List<Componenta> componentaList = new List<Componenta>();
@@ -68,7 +31,8 @@ namespace PC_parts_app_management
                 Console.WriteLine("3. Salveaza componenta in fisier");
                 Console.WriteLine("4. Afiseaza toate componentele ");
                 Console.WriteLine("5. Cauta componenta dupa nume, model sau brand");
-                Console.WriteLine("6. Iesire program");
+                Console.WriteLine("6. Citire componente din fisier");
+                Console.WriteLine("7. Iesire program");
                 Console.Write("Introdu optiune: ");
 
                 string optiune = Console.ReadLine();
@@ -136,7 +100,15 @@ namespace PC_parts_app_management
                             Console.WriteLine($"Nu s-a gasit nicio componenta care sa contina cuvantul '{termenCautat}'.");
                         }
                         break;
-                    case "6":
+                        case "6":
+                        componentaList = Componenta.Citire_fisier();
+                        Console.WriteLine("Componentele au fost citite.");
+                        /*foreach (Componenta c in componentaList)
+                        {
+                            Console.WriteLine(c.showInfo());
+                        */
+                        break; 
+                    case "7":
                         exit = true;
                         break;
                     default:
@@ -146,9 +118,6 @@ namespace PC_parts_app_management
 
                 Console.WriteLine();
             }
-
-
-
 
             Console.ReadKey();
 

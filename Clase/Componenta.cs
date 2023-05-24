@@ -99,6 +99,39 @@ namespace Clase
             }
             SetPret(pret);
         }
+
+        public static List<Componenta> Citire_fisier(string filePath = "componente.txt")
+        {
+            List<Componenta> components = new List<Componenta>();
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] values = line.Split('|');
+                        if (values.Length == 4)
+                        {
+                            string nume = values[0].Trim();
+                            string brand = values[1].Trim();
+                            string model = values[2].Trim();
+                            float pret = float.Parse(values[3].Trim());
+                            Componenta componenta = new Componenta(nume, brand, model, pret);
+                            components.Add(componenta);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Eroare la citirea din fișier: {ex.Message}");
+            }
+
+            return components;
+        }
+
         public class Scriere_fisier
         {
             public void scrie_in_fisier(Componenta componenta, string filePath)
