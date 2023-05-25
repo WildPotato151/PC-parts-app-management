@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2B9DCC1-0CF7-4D98-A213-10204BEC9A2C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>PC_parts_app_management</RootNamespace>
-    <AssemblyName>PC parts app management</AssemblyName>
+    <ProjectGuid>{DD3C8F90-0FD1-451C-9A60-8228A6E12204}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CompomenteDataManagement</RootNamespace>
+    <AssemblyName>CompomenteDataManagement</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,20 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="AdministrareComponente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Clase\Clase.csproj">
-      <Project>{7B2AE882-BDF6-48EF-B609-4511B6183E00}</Project>
+    <ProjectReference Include="..\Clase\Clase.csproj">
+      <Project>{7b2ae882-bdf6-48ef-b609-4511b6183e00}</Project>
       <Name>Clase</Name>
-    </ProjectReference>
-    <ProjectReference Include="CompomenteDataManagement\CompomenteDataManagement.csproj">
-      <Project>{dd3c8f90-0fd1-451c-9a60-8228a6e12204}</Project>
-      <Name>CompomenteDataManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

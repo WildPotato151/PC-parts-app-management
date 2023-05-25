@@ -1,4 +1,5 @@
 ﻿using System;
+using Clase.Enum;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,11 +11,22 @@ namespace Clase
 {
     public class Componenta
     {
-        private string nume;
+        private const char SEPARATOR_PRINCIPAL_FISIER = ';';
+        /*private string nume;
         private string brand;
         private string model;
-        private float pret;
+        private float pret;*/
+        public string nume { get; set; }
+        public string brand { get; set; }
+        public string model { get; set; }
+        public float pret { get; set; }
 
+        private const int NUME = 0;
+        private const int BRAND = 1;
+        private const int MODEL = 2;
+        private const int PRET = 3;
+
+        public TipComponenta tipComponenta { get; set; }
 
         public Componenta()
         {
@@ -100,54 +112,79 @@ namespace Clase
             SetPret(pret);
         }
 
-        public static List<Componenta> Citire_fisier(string filePath = "componente.txt")
+        public Componenta(string linieFisier)
         {
-            List<Componenta> components = new List<Componenta>();
+            var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
 
-            try
-            {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        string[] values = line.Split('|');
-                        if (values.Length == 4)
-                        {
-                            string nume = values[0].Trim();
-                            string brand = values[1].Trim();
-                            string model = values[2].Trim();
-                            float pret = float.Parse(values[3].Trim());
-                            Componenta componenta = new Componenta(nume, brand, model, pret);
-                            components.Add(componenta);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Eroare la citirea din fișier: {ex.Message}");
-            }
+            nume = dateFisier[NUME];
+            brand = dateFisier[BRAND];
+            model = dateFisier[MODEL];
+            pret = float.Parse(dateFisier[PRET]);
 
-            return components;
+            
+        }
+        public string ConversieLaSir_PentruFisier()
+        {
+            string obiectInchirierePentruFisier = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}",
+                SEPARATOR_PRINCIPAL_FISIER,
+                (nume ?? " NECUNOSCUT "),
+                (brand ?? " NECUNOSCUT "),
+                (model.ToString() ?? " NECUNOSCUT "),
+                (pret.ToString()));
+
+            return obiectInchirierePentruFisier;
         }
 
-        public class Scriere_fisier
-        {
-            public void scrie_in_fisier(Componenta componenta, string filePath)
-            {
-                using (StreamWriter writer = new StreamWriter(filePath, true))
-                {
-                    writer.WriteLine("Nume: " + componenta.nume);
-                    writer.WriteLine("Brand: " + componenta.brand);
-                    writer.WriteLine("Model: " + componenta.model);
-                    writer.WriteLine("Pret: " + componenta.pret + " lei");
-                    writer.WriteLine("---------------------------------");
 
-                    writer.Close();
-                }
-            }
-        }
+
+        /* public static List<Componenta> Citire_fisier(string filePath = "componente.txt")
+         {
+             List<Componenta> components = new List<Componenta>();
+
+             try
+             {
+                 using (StreamReader reader = new StreamReader(filePath))
+                 {
+                     string line;
+                     while ((line = reader.ReadLine()) != null)
+                     {
+                         string[] values = line.Split('|');
+                         if (values.Length == 4)
+                         {
+                             string nume = values[0].Trim();
+                             string brand = values[1].Trim();
+                             string model = values[2].Trim();
+                             float pret = float.Parse(values[3].Trim());
+                             Componenta componenta = new Componenta(nume, brand, model, pret);
+                             components.Add(componenta);
+                         }
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine($"Eroare la citirea din fișier: {ex.Message}");
+             }
+
+             return components;
+         }
+
+         public class Scriere_fisier
+         {
+             public void scrie_in_fisier(Componenta componenta, string filePath)
+             {
+                 using (StreamWriter writer = new StreamWriter(filePath, true))
+                 {
+                     writer.WriteLine("Nume: " + componenta.nume);
+                     writer.WriteLine("Brand: " + componenta.brand);
+                     writer.WriteLine("Model: " + componenta.model);
+                     writer.WriteLine("Pret: " + componenta.pret + " lei");
+                     writer.WriteLine("---------------------------------");
+
+                     writer.Close();
+                 }
+             }
+         }*/
 
     }
 }

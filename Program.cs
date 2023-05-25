@@ -1,16 +1,13 @@
 ﻿using Clase;
-//using FileReader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Configuration;
 
-
-
-
-
+using CompomenteDataManagement;
 
 namespace PC_parts_app_management
 {
@@ -21,8 +18,19 @@ namespace PC_parts_app_management
            
             
             bool exit = false;
-            string filePath = "text.txt";
+            //string filePath = "text.txt";
             List<Componenta> componentaList = new List<Componenta>();
+            Componenta componenta = new Componenta();
+
+            
+           
+            string locatieFisierSolutie = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            
+            string caleCompletaFisierComponente = locatieFisierSolutie + "\\" + "componenta.txt";
+
+
+            AdministrareComponente adminComponente = new AdministrareComponente(caleCompletaFisierComponente);
+            
 
             while (!exit)
             {
@@ -41,7 +49,7 @@ namespace PC_parts_app_management
                 switch (optiune)
                 {
                     case "1":
-                        Componenta componenta = new Componenta();
+                       // Componenta componenta = new Componenta();
                         componenta.GetInput();
                         componentaList.Add(componenta);
                         break;
@@ -58,8 +66,8 @@ namespace PC_parts_app_management
                     case "3":
                         if (componentaList.Count > 0)
                         {
-                            Componenta.Scriere_fisier fisier = new Componenta.Scriere_fisier();
-                            fisier.scrie_in_fisier(componentaList.Last(), filePath);
+                            adminComponente.AddComponenta(componenta);
+                            Console.WriteLine("Componente adaugate in fisier");
                         }
                         else
                         {
@@ -100,14 +108,15 @@ namespace PC_parts_app_management
                             Console.WriteLine($"Nu s-a gasit nicio componenta care sa contina cuvantul '{termenCautat}'.");
                         }
                         break;
-                        case "6":
-                        componentaList = Componenta.Citire_fisier();
+                        /*case "6":
+                        
+                        componentaList = Componenta.GetComponente();
                         Console.WriteLine("Componentele au fost citite.");
-                        /*foreach (Componenta c in componentaList)
+                        foreach (Componenta c in componentaList)
                         {
                             Console.WriteLine(c.showInfo());
-                        */
-                        break; 
+                        }
+                        break; */
                     case "7":
                         exit = true;
                         break;
